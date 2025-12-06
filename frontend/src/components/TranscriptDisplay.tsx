@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useWebSocket } from '../hooks/useWebSocket';
+import FluidGlass from './FluidGlass';
 
 interface TranscriptDisplayProps {
   websocketUrl: string;
@@ -138,11 +139,26 @@ export function TranscriptDisplay({ websocketUrl }: TranscriptDisplayProps) {
         backgroundColor: '#1a7b7f',
         borderRadius: '16px',
         boxShadow: '0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -4px rgba(0,0,0,0.1)',
-        zIndex: 10
+        zIndex: 10,
+        overflow: 'hidden'
       }}
     >
+      {/* Glass texture overlay (3D) */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+        <FluidGlass
+          mode="lens"
+          lensProps={{
+            scale: 0.25,
+            ior: 1.15,
+            thickness: 5,
+            chromaticAberration: 0.1,
+            anisotropy: 0.01
+          }}
+        />
+      </div>
+
       {/* Inner container with proper padding */}
-      <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', paddingTop: '17px', paddingBottom: '20px', paddingLeft: '24px', paddingRight: '24px' }}>
+      <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', paddingTop: '17px', paddingBottom: '20px', paddingLeft: '24px', paddingRight: '24px', zIndex: 1 }}>
         {/* Header */}
         <div className="flex items-center gap-2 mb-3 shrink-0">
           <div className="bg-[#b1d2d3] rounded-[46.667px] size-[20px] flex items-center justify-center shrink-0">

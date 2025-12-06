@@ -8,7 +8,7 @@ import { TranscriptDisplay } from "../components/TranscriptDisplay";
 gsap.registerPlugin(TextPlugin);
 
 // WebSocket URL - update this to match your backend
-const WEBSOCKET_URL = "ws://nonrelativistic-precerebral-valery.ngrok-free.dev/frontend-stream";
+const WEBSOCKET_URL = "ws://localhost:8000/frontend-stream";
 
 function Frame19() {
   const ref = useRef<HTMLDivElement>(null);
@@ -1203,7 +1203,17 @@ export default function IPhoneSe() {
   
   // Transcript screen (main view)
   return (
-    <div ref={containerRef} style={{ background: '#f6f6f6', position: 'relative', overflowY: 'auto', width: '375px', height: '667px' }} data-name="iPhone SE - 2">
+    <div
+      ref={containerRef}
+      style={{
+        background: '#f6f6f6',
+        position: 'relative',
+        overflow: 'visible',
+        width: '100vw',
+        height: '100vh'
+      }}
+      data-name="iPhone SE - 2"
+    >
       <Frame13 />
       
       {/* Show intercept notification, then action buttons, then see report button */}
