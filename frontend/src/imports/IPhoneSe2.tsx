@@ -7,8 +7,8 @@ import { TranscriptDisplay } from "../components/TranscriptDisplay";
 
 gsap.registerPlugin(TextPlugin);
 
-// WebSocket URL - update this to match your backend
-const WEBSOCKET_URL = "ws://localhost:8000/frontend-stream";
+// WebSocket URL pulled from environment (fallback to localhost for dev)
+const WEBSOCKET_URL = import.meta.env.VITE_WEBSOCKET_URL || "ws://localhost:8000/frontend-stream";
 
 function Frame19() {
   const ref = useRef<HTMLDivElement>(null);

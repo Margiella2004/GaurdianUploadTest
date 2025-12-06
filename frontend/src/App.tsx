@@ -5,7 +5,7 @@ import { WebSocketProvider } from "./contexts/WebSocketContext";
 
 export default function App() {
   // Toggle between old and new UI
-  const [useNewUI, setUseNewUI] = useState(false);
+  const [useNewUI, setUseNewUI] = useState(true);
 
   return (
     <WebSocketProvider>
